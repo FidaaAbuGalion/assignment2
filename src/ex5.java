@@ -83,6 +83,9 @@ public class ex5 {
             System.out.println("choose a positions  1-9");
             userPosition = scanner.nextInt();
             invalidPosition = userPosition < 1 || userPosition > 9 ;
+            if (!invalidPosition && x0[userPosition] == 'x' || x0[userPosition-1] == '0'){
+                System.out.println(" the place is occupied ");
+            }
 
         } while (invalidPosition );
 
@@ -105,8 +108,11 @@ public class ex5 {
 
     private static char checkWinnerBySlant(char[] array) {
         char winner = '-';
-        boolean xWinner = array[0] == 'x' && array[4] == 'x' && array[8] == 'x';
-        boolean oWinner = array[2] == '0' && array[4] == '0' && array[6] == '0';
+        boolean xWinner = array[0] == 'x' && array[4] == 'x' && array[8] == 'x'
+       ||  array[2] == 'x' && array[4] == 'x' && array[6] == 'x';
+
+        boolean oWinner = array[0] == '0' && array[4] == '0' && array[8] =='0'
+        || array[2] == '0' && array[4] == '0' && array[6] == '0';
 
         if (xWinner) {
             winner = 'x';
